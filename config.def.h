@@ -12,10 +12,8 @@ static const int smartgaps_fact          = 1;   /* gap factor when there is only
 static const int showbar                 = 1;   /* 0 means no bar */
 static const int topbar                  = 1;   /* 0 means bottom bar */
 static const int focusonwheel            = 0;
-
 /* Status is to be shown on: -1 (all monitors), 0 (a specific monitor by index), 'A' (active monitor) */
 static const int statusmon               = 'A';
-
 /* Indicators: see patch/bar_indicators.h for options */
 static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE;
 static int tiledindicatortype            = INDICATOR_NONE;
@@ -64,7 +62,6 @@ static char urgfgcolor[]                 = "#d7d7d7";
 static char urgbgcolor[]                 = "#282c34";
 static char urgbordercolor[]             = "#282c34";
 static char urgfloatcolor[]              = "#db8fd9";
-
 
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
@@ -121,7 +118,6 @@ static char *colors[][ColCount] = {
  * until it an icon matches. Similarly if there are two tag icons then it would alternate between
  * them. This works seamlessly with alternative tags and alttagsdecoration patches.
  */
-
 static char *tagicons[][NUMTAGS] = {
 	[DEFAULT_TAGS]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 	[ALTERNATIVE_TAGS]    = { "A", "B", "C", "D", "E", "F", "G", "H", "I" },
@@ -269,9 +265,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period,     tagmon,                 {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_comma,      cyclelayout,            {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period,     cyclelayout,            {.i = +1 } },
-	{ 0,							XF86XK_AudioRaiseVolume,spawn,					SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
-	{ 0,							XF86XK_AudioLowerVolume,spawn,					SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
-	{ 0,							XF86XK_AudioMute,	    spawn,					SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle")},
+	{ 0,							XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
+	{ 0,							XF86XK_AudioLowerVolume,	spawn,		SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
+	{ 0,							XF86XK_AudioMute,			spawn,		SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle")},
+	{ MODKEY,						XK_Escape,					spawn,		SHCMD("slock") },
 	TAGKEYS(                        XK_1,                                  0)
 	TAGKEYS(                        XK_2,                                  1)
 	TAGKEYS(                        XK_3,                                  2)
